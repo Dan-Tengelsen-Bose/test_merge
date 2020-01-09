@@ -19,7 +19,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.1"
+    ComputedModelVersion    "1.2"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -145,9 +145,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "dt1005418"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jan 09 11:29:56 2020"
-  RTWModifiedTimeStamp	  500469353
-  ModelVersionFormat	  "1.%<AutoIncrement:1>"
+  LastModifiedDate	  "Thu Jan 09 11:39:19 2020"
+  RTWModifiedTimeStamp	  500470756
+  ModelVersionFormat	  "1.%<AutoIncrement:2>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "disabled"
@@ -1148,6 +1148,9 @@ Model {
       AutoFrameSizeCalculation off
       IsWebBlockPanel	      off
     }
+    Block {
+      BlockType		      Terminator
+    }
   }
   System {
     Name		    "test_file"
@@ -1168,7 +1171,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "6"
+    SIDHighWatermark	    "9"
     SimulinkSubDomain	    "Simulink"
     Block {
       BlockType		      Inport
@@ -1262,11 +1265,19 @@ Model {
 	  BlockType		  Gain
 	  Name			  "Gain"
 	  SID			  "3"
-	  Position		  [265, 20, 295, 50]
+	  Position		  [150, 5, 230, 65]
 	  ZOrder		  179
+	  Gain			  "gainVal"
 	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
 	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "9"
+	  Position		  [425, -110, 445, -90]
+	  ZOrder		  184
 	}
 	Block {
 	  BlockType		  Outport
@@ -1284,11 +1295,21 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  4
+	  ZOrder		  7
 	  SrcBlock		  "Gain"
 	  SrcPort		  1
-	  DstBlock		  "Out1"
-	  DstPort		  1
+	  Points		  [57, 0]
+	  Branch {
+	    ZOrder		    10
+	    DstBlock		    "Out1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    8
+	    Points		    [0, -135]
+	    DstBlock		    "Terminator"
+	    DstPort		    1
+	  }
 	}
       }
     }
